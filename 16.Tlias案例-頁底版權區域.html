@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tlias智能學習輔助系統</title>
+    <style>
+        /* 頂部導航欄樣式 */
+        .top-nav {
+            background-color: #b5b3b3;
+            /* 灰色背景 */
+            padding: 10px;
+            /* 增加內邊距 */
+            display: flex;
+            /* 使用彈性盒子布局 */
+            justify-content: space-between;
+            /* 左右對齊 */
+            align-items: center;
+            /* 垂直居中 */
+        }
+
+        /* 標題樣式 */
+        .top-nav h1 {
+            font-size: 20px;
+            font-weight: bold;
+            /* 加粗 */
+            margin: 0;
+            /* 去除外邊距 */
+            color: white;
+            /* 深色字體 */
+            /* 設置字體為標楷體 */
+            font-family: "標楷體";
+        }
+
+        /* 退出登入超鏈結樣式 */
+        .top-nav a {
+            text-decoration: none;
+            /* 移除底線 */
+            font-size: 16px;
+            color: #333;
+        }
+
+        .top-nav a:hover {
+            color: #ff4500;
+            /* 滑鼠懸停時變色 */
+        }
+
+
+        /* 搜索區域樣式 */
+        .search-form {
+            background-color: #f5f5f5;
+            /* 淡灰色背景 */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            /* 增加外邊距 */
+            display: flex;
+            justify-content: space-between;
+            /* 左邊表單項，右邊按鈕 */
+            align-items: center;
+            /* 垂直居中 */
+        }
+
+
+        /* 表單控件樣式 */
+        .search-form input,
+        .search-form select {
+            padding: 8px;
+            font-size: 16px;
+            width: 300px;
+            /* 設置寬度 */
+        }
+
+        /* 按鈕樣式 */
+        .search-form button {
+            padding: 8px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* 按鈕懸停樣式 */
+        .search-form button.reset {
+            background-color: #6c757d;
+        }
+
+        .button-group {
+            margin-left: auto;
+            /* 讓按鈕區塊靠右 */
+            display: flex;
+            gap: 10px;
+        }
+
+
+        /* 表格區域樣式 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            /* 合併邊框 */
+            background-color: #f9f9f9;
+        }
+
+        /* 表頭樣式 */
+        .data-table th {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            text-align: center;
+        }
+
+        /* 表格內容樣式 */
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 頭像樣式 */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* 操作按鈕樣式 */
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        /* 頁腳樣式 */
+        .footer {
+            background-color: #b5b3b3;
+            /* 深灰色背景 */
+            color: white;
+            /* 白色文字 */
+            text-align: center;
+            /* 文字居中對齊 */
+            padding: 15px 0;
+            /* 內邊距 */
+            font-size: 16px;
+            margin-top: 30px;
+            /* 讓頁腳在底部 */
+        }
+
+        #container {
+            width: 80%;
+            margin: 0 auto; /* 讓容器居中 */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <!-- 頂部導航欄 -->
+        <div class="top-nav">
+            <h1>Tlias智能學習輔助系統</h1>
+            <a href="#">退出登入</a>
+        </div>
+
+        <!-- 搜索表單區域 -->
+        <form action="/search" method="post" class="search-form">
+            <!-- label的for與input的name屬性相同，這樣點擊label時會聚焦到對應的input -->
+            <label for="name">姓名：</label>
+            <input type="text" name="name" placeholder="請輸入名字" id="name">
+
+            <label for="gender">性別：</label>
+            <select name="gender">
+                <option value="" selected disabled></option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+
+            <label for="position">職位：</label>
+            <select name="position">
+                <option value=""></option>
+                <option value="班主任">班主任</option>
+                <option value="講師">講師</option>
+                <option value="諮詢師">諮詢師</option>
+            </select>
+
+            <div class="button-group">
+                <button type="submit">查詢</button>
+                <button type="reset" class="reset">清空</button>
+            </div>
+        </form>
+
+        <br>
+
+        <!-- 表格區域 -->
+        <table class="data-table">
+            <!-- 表頭 -->
+            <thead>
+                <!-- 表頭行 -->
+                <tr>
+                    <!-- 表頭單元格 -->
+                    <th>姓名</th>
+                    <th>性別</th>
+                    <th>頭像</th>
+                    <th>職位</th>
+                    <th>入職日期</th>
+                    <th>最後操作時間</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <!-- 表格內容 -->
+            <tbody>
+                <tr>
+                    <!-- 表格單元格 -->
+                    <td>宋江</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="宋江" class="avatar"></td>
+                    <td>班主任</td>
+                    <td>2019-05-10</td>
+                    <td>2025-05-19 18:45</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>林冲</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="林冲" class="avatar"></td>
+                    <td>講師</td>
+                    <td>2020-08-22</td>
+                    <td>2025-05-19 19:05</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>武松</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="武松" class="avatar"></td>
+                    <td>諮詢師</td>
+                    <td>2021-12-15</td>
+                    <td>2025-05-19 19:20</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>李逵</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="李逵" class="avatar"></td>
+                    <td>助教</td>
+                    <td>2022-03-10</td>
+                    <td>2025-05-19 19:30</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>花榮</td>
+                    <td>女</td>
+                    <td><img src="https://via.placeholder.com/40" alt="花榮" class="avatar"></td>
+                    <td>班主任</td>
+                    <td>2023-01-05</td>
+                    <td>2025-05-19 19:40</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>燕青</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="燕青" class="avatar"></td>
+                    <td>講師</td>
+                    <td>2024-02-20</td>
+                    <td>2025-05-19 19:50</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>李師師</td>
+                    <td>女</td>
+                    <td><img src="https://via.placeholder.com/40" alt="李師師" class="avatar"></td>
+                    <td>助教</td>
+                    <td>2025-03-15</td>
+                    <td>2025-05-19 20:00</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>陸謙</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="陸謙" class="avatar"></td>
+                    <td>講師</td>
+                    <td>2025-04-10</td>
+                    <td>2025-05-19 20:10</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>張青</td>
+                    <td>女</td>
+                    <td><img src="https://via.placeholder.com/40" alt="張青" class="avatar"></td>
+                    <td>助教</td>
+                    <td>2025-05-01</td>
+                    <td>2025-05-19 20:20</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>李逵</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="李逵" class="avatar"></td>
+                    <td>助教</td>
+                    <td>2025-05-10</td>
+                    <td>2025-05-19 20:30</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>陸謙</td>
+                    <td>男</td>
+                    <td><img src="https://via.placeholder.com/40" alt="陸謙" class="avatar"></td>
+                    <td>講師</td>
+                    <td>2025-05-15</td>
+                    <td>2025-05-19 20:40</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>張青</td>
+                    <td>女</td>
+                    <td><img src="https://via.placeholder.com/40" alt="張青" class="avatar"></td>
+                    <td>助教</td>
+                    <td>2025-05-20</td>
+                    <td>2025-05-19 20:50</td>
+                    <td>
+                        <button class="btn btn-edit">編輯</button>
+                        <button class="btn btn-delete">刪除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 頁底區域 -->
+        <footer class="footer">
+            <p>溜溜球科技股份有限公司</p>
+            <p>版權所有 Copyright 2025-2026 All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單標籤</title>
+</head>
+<body>
+    <!-- 
+        form 表單標籤
+        action: 提交表單的網址
+        method: 提交表單的方式
+            get: 透過網址傳遞資料
+            post: 透過請求傳遞資料 
+        注意：get 方式傳遞的資料會顯示在網址上，post 方式不會
+        例如：/save?name=小明&age=18
+
+        GET特點：
+        1. 表單中包含隱私數據，get 方式不適合
+        2. 表單中包含大量數據，get 方式不適合，因為有數據限制
+        POST特點：
+        1. 安全
+        2. 請求大小沒有限制       
+    -->
+    <form action="/save" method="post">
+        姓名：<input type="text" name="name"><br>
+        年齡：<input type="text" name="age"><br>
+        <input type="submit" value="送出">
+    </form>
+</body>
+</html>
