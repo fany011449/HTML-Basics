@@ -66,6 +66,7 @@
                 <td>&lt;select&gt; / &lt;option&gt;</td>
                 <td>表單項（下拉清單/選項）</td>
             </tr>
+
             <!-- CSS盒子模型部分 -->
             <tr>
                 <td rowspan="6">盒子模型</td>
@@ -92,6 +93,7 @@
                 <td><b>作用</b></td>
                 <td>控制元素尺寸、內邊距、邊框、外邊距，從而控制頁面的佈局展示</td>
             </tr>
+
             <!-- Flex彈性佈局部分 -->
             <tr>
                 <td rowspan="3">flex彈性佈局</td>
