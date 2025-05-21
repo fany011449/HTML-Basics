@@ -26,7 +26,6 @@
       <td>&lt;a href="..."&gt;</td>
       <td>超連結（屬性：href，target）</td>
     </tr>
-    
     <tr>
       <td rowspan="2">圖片、音視頻標籤</td>
       <td>&lt;img src="..."&gt;</td>
@@ -36,13 +35,11 @@
       <td>&lt;audio src="..."&gt;, &lt;video src="..."&gt;</td>
       <td>音頻、視頻</td>
     </tr>
-    
     <tr>
       <td>佈局標籤</td>
       <td>&lt;div&gt;, &lt;span&gt;</td>
       <td>沒有語義的佈局標籤，配合CSS實現頁面佈局</td>
     </tr>
-    
     <tr>
       <td rowspan="3">表格標籤</td>
       <td>&lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;</td>
@@ -56,7 +53,6 @@
       <td>&lt;form&gt;</td>
       <td>定義表單（屬性：action，method）</td>
     </tr>
-    
     <tr>
       <td rowspan="2">表單標籤</td>
       <td>&lt;input type="text/button"&gt;</td>
@@ -66,8 +62,6 @@
       <td>&lt;select&gt; / &lt;option&gt;</td>
       <td>表單項（下拉清單/選項）</td>
     </tr>
-
-    <!-- CSS盒子模型部分 -->
     <tr>
       <td rowspan="6">盒子模型</td>
       <td>width, height</td>
@@ -93,8 +87,6 @@
       <td><b>作用</b></td>
       <td>控制元素尺寸、內邊距、邊框、外邊距，從而控制頁面的佈局展示</td>
     </tr>
-
-    <!-- Flex彈性佈局部分 -->
     <tr>
       <td rowspan="3">flex彈性佈局</td>
       <td>display</td>
